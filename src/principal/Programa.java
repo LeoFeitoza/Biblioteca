@@ -5,6 +5,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Formatter;
 import java.util.Scanner;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+
 import java.util.List;
 import java.util.ArrayList;
 import principal.modelo.*;
@@ -14,8 +19,14 @@ public class Programa{
 
     public static void main(String[] args) throws FileNotFoundException {
     	
-    	Catalogo catalogo = new Catalogo();
+    	String persistence = "biblioteca_myql";
     	
+    	EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistence);
+		EntityManager em = emf.createEntityManager();
+		
+		
+    	Catalogo catalogo = new Catalogo();
+    	 	
     	List<Cliente> listaClientes = new ArrayList<>();
 
         //leitura de arquivos
@@ -65,6 +76,9 @@ public class Programa{
 		
 		gravador.format(headerLivros + "\n");
 		for(int i=0; i<catalogo.ultimo(); i++) {
+			em.getTransaction().begin();
+			em.persist(catalogo.getLivro(i));
+			em.getTransaction().commit();
 			gravador.format(catalogo.getLivro(i).getId() + ";" + catalogo.getLivro(i).getNome() + ";" + catalogo.getLivro(i).getQuantidade() + ";" + catalogo.getLivro(i).getQteretirada() + ";\n");
 		}
 		
@@ -74,6 +88,9 @@ public class Programa{
 		gravadorClientes.format(headerClientes + "\n");
 		
 		for(Cliente c : listaClientes) {
+			em.getTransaction().begin();
+			em.persist(c);
+			em.getTransaction().commit();
 			gravadorClientes.format(c.getNome() + ";" + c.getEspera() + ";" + c.getRetirado() + ";\n");
 		}
        
@@ -89,4 +106,3 @@ public class Programa{
 
     }
 }
-

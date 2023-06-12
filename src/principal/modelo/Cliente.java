@@ -1,12 +1,35 @@
 package principal.modelo;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
+@Entity
 public class Cliente {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 	private String nome;
 	private int espera;
 	private int retirado;
 	private boolean temlivro;
 	private boolean esperando;
 	
+	public Cliente() {
+		
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Cliente(String nome, int espera, int retirado) {
 		this.nome = nome;
 		this.espera = espera;
