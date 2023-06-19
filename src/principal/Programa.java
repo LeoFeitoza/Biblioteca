@@ -1,7 +1,7 @@
 package principal;
 
 
-import java.io.File;
+/*import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Formatter;
 import java.util.Scanner;
@@ -11,27 +11,27 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import java.util.List;
-import java.util.ArrayList;
-import principal.modelo.*;
+import java.util.ArrayList;*/
+// import principal.modelo.*;
 import principal.view.*;
 
 public class Programa{
 
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
     	
-    	String persistence = "biblioteca_myql";
+    	/*String persistence = "biblioteca_myql";
     	
     	EntityManagerFactory emf = Persistence.createEntityManagerFactory(persistence);
-		EntityManager em = emf.createEntityManager();
+		EntityManager em = emf.createEntityManager();*/
 		
 		
-    	Catalogo catalogo = new Catalogo();
+    	/*Catalogo catalogo = new Catalogo();
     	 	
     	List<Cliente> listaClientes = new ArrayList<>();
 
         //leitura de arquivos
     	
-        String arquivoOrigemLivros = "C:\\_javaws\\biblioteca\\Biblioteca\\src\\livros.csv";
+        /*String arquivoOrigemLivros = "C:\\_javaws\\biblioteca\\Biblioteca\\src\\livros.csv";
 		File arquivoLivros = new File(arquivoOrigemLivros);
 		Scanner leitorLivros = new Scanner(arquivoLivros);
 		
@@ -57,11 +57,12 @@ public class Programa{
         	listaClientes.add(new Cliente(valores[0], Integer.parseInt(valores[1]), Integer.parseInt(valores[2])));
         	
         }
-		
+		*/
         
         //menu e execução
         
-        Menu menu = new Menu(catalogo, listaClientes);
+        //Menu menu = new Menu(catalogo, listaClientes);
+        Menu menu = new Menu();
         
         menu.mostrarMenu();
         	
@@ -71,14 +72,11 @@ public class Programa{
         
         //gravação de arquivos
 
-        String arquivoDestinoLivros = "C:\\_javaws\\biblioteca\\Biblioteca\\src\\livros.csv";
+        /*String arquivoDestinoLivros = "C:\\_javaws\\biblioteca\\Biblioteca\\src\\livros.csv";
 		Formatter gravador = new Formatter(arquivoDestinoLivros);
 		
 		gravador.format(headerLivros + "\n");
 		for(int i=0; i<catalogo.ultimo(); i++) {
-			em.getTransaction().begin();
-			em.persist(catalogo.getLivro(i));
-			em.getTransaction().commit();
 			gravador.format(catalogo.getLivro(i).getId() + ";" + catalogo.getLivro(i).getNome() + ";" + catalogo.getLivro(i).getQuantidade() + ";" + catalogo.getLivro(i).getQteretirada() + ";\n");
 		}
 		
@@ -88,16 +86,13 @@ public class Programa{
 		gravadorClientes.format(headerClientes + "\n");
 		
 		for(Cliente c : listaClientes) {
-			em.getTransaction().begin();
-			em.persist(c);
-			em.getTransaction().commit();
 			gravadorClientes.format(c.getNome() + ";" + c.getEspera() + ";" + c.getRetirado() + ";\n");
 		}
        
 		leitorClientes.close();
         leitorLivros.close();
         gravador.close();
-        gravadorClientes.close();
+        gravadorClientes.close();*/
         
         
             

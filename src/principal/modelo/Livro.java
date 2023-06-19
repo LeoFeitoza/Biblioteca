@@ -17,20 +17,12 @@ public class Livro {
 	private String nome;
 	private int quantidade;
 	private int qteretirada;
-	private boolean disponivel;
 	private List<String> fila = new ArrayList<>();
 	
-	public Livro(int id, String nome, int qte, int qteretirada) {
-		this.id = id;
+	public Livro(String nome, int qte, int qteretirada) {
 		this.nome = nome;
 		this.quantidade = qte;
 		this.qteretirada = qteretirada;
-		if(qteretirada==qte) {
-			this.disponivel=false;
-		}
-		else {
-			this.disponivel=true;
-		}
 	}
 	
 	public Livro() {
@@ -60,14 +52,6 @@ public class Livro {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public boolean isDisponivel() {
-		return disponivel;
-	}
-
-	public void setDisponivel(boolean disponivel) {
-		this.disponivel = disponivel;
-	}
 
 	public List<String> getFila() {
 		return fila;
@@ -95,13 +79,11 @@ public class Livro {
 	
 	public boolean checkDispobibilidade() {
 		if(this.quantidade == this.qteretirada) {
-			this.disponivel = false;
+			return false;
 		}
 		else {
-			this.disponivel = true;
+			return true;
 		}
-		
-		return this.disponivel;
 	}
 	
 	public void colocarNaFila(String user) {

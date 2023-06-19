@@ -15,8 +15,6 @@ public class Cliente {
 	private String nome;
 	private int espera;
 	private int retirado;
-	private boolean temlivro;
-	private boolean esperando;
 	
 	public Cliente() {
 		
@@ -43,26 +41,6 @@ public class Cliente {
 	public String getNome() {
 		return this.nome;
 	}
-	
-	public boolean isTemlivro() {
-		return temlivro;
-	}
-
-	public void setTemlivro(boolean temlivro) {
-		this.temlivro = temlivro;
-	}
-
-	public void setRetirado(int retirado) {
-		this.retirado = retirado;
-	}
-
-	public boolean isEsperando() {
-		return esperando;
-	}
-
-	public void setEsperando(boolean esperando) {
-		this.esperando = esperando;
-	}
 
 	public int getEspera() {
 		return espera;
@@ -74,10 +52,6 @@ public class Cliente {
 
 	public void setEspera(int id) {
 		this.espera = id;
-	}
-	
-	public boolean getTemLivro() {
-		return this.temlivro;
 	}
 	
 	public void retirarLivro(Livro livro) {
@@ -98,7 +72,6 @@ public class Cliente {
 			}
 			this.retirado = livro.getId();
 			livro.retirar();
-			this.temlivro = true;
 			return;
 		}
 	}
@@ -117,7 +90,6 @@ public class Cliente {
 		if(catalogo.getLivro(id).checkDispobibilidade()) {
 			this.retirado = catalogo.getLivro(id).getId();
 			catalogo.getLivro(id).retirar();
-			this.temlivro = true;
 			return;
 		}
 		
@@ -126,7 +98,6 @@ public class Cliente {
 	public void devolverLivro(Livro livro) {
 		this.retirado = -1;
 		livro.devolver();
-		this.temlivro = false;
 	}
 	
 	public void printCliente(Catalogo catalogo) {
